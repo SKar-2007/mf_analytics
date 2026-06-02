@@ -1,0 +1,1 @@
+git commit -m "Day 1: Refactored files into scripts directory to match capstone blueprint"
