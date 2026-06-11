@@ -45,7 +45,7 @@ python scripts/recommender.py
 Open `dashboard/bluestock_mf.pbix` in Power BI Desktop.
 
 ## Key Results
-- Top fund by Scorecard: [fill in after running]
+- Top fund by Scorecard: 
 - Industry AUM Dec 2025: ₹81L Cr
 - SIP ATH: ₹31,002 Cr (Dec 2025)
 - Folio count: 26.12 Cr
