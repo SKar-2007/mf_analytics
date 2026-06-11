@@ -1,7 +1,6 @@
 data/
-.venv/
 __pycache__/
-.ipynb_checkpoints/
 .env
 *.pyc
 .DS_Store
+charts/*.png

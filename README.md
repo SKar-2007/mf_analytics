@@ -1,81 +1,66 @@
 # Bluestock Mutual Fund Analytics Capstone
 
 ## Overview
-End-to-end data analytics project covering Indian mutual fund industry data (2022–2026). Ingests 10+ datasets, builds a SQLite star-schema warehouse, delivers 15+ EDA charts, institutional performance metrics, and advanced risk analytics.
-
-## Project Structure
-```
-├── data/
-│   ├── raw/              # Source CSVs + live NAV files
-│   ├── processed/        # Cleaned CSVs (pipeline output)
-│   └── db/               # SQLite database (bluestock_mf.db)
-├── scripts/
-│   ├── data_cleaning.py        # Cleans all raw CSVs
-│   ├── load_database.py        # Loads cleaned data to SQLite
-│   ├── live_nav_fetch.py       # Fetches live NAV from MFAPI
-│   ├── performance_analytics.py # CAGR, Sharpe, Alpha/Beta, MDD
-│   ├── recommender.py          # Risk-based fund recommender
-│   ├── generate_eda_charts.py       # 15 EDA charts
-│   ├── generate_performance_charts.py # Scorecard + benchmark
-│   └── generate_advanced_charts.py   # VaR, rolling Sharpe, cohort, HHI
-├── sql/
-│   ├── schema.sql        # DDL for all 11 tables
-│   └── queries.sql       # 10 analytical queries
-├── notebooks/
-│   ├── 03_eda_analysis.ipynb
-│   └── 04_performance_analytics.ipynb
-├── charts/               # All exported chart PNGs (21 charts)
-├── dashboard/            # Power BI report
-├── reports/              # Final report + presentation
-├── run_pipeline.py       # Master execution script
-├── data_ingestion.py     # Dataset inspection
-├── db_load.py            # Alternative DB loader
-└── data_dictionary.md    # Column-level documentation
-```
+End-to-end data analytics project covering Indian mutual fund industry data (2022–2026). Ingests 10+ datasets, builds a SQLite star-schema warehouse, delivers 15+ EDA charts, institutional performance metrics, and a 4-page Power BI dashboard.
 
 ## Setup
 ```bash
-git clone https://github.com/<username>/bluestock-mf-capstone.git
-cd bluestock-mf-capstone
+git clone https://github.com/<username>/bluestock_mf_capstone.git
+cd bluestock_mf_capstone
 pip install -r requirements.txt
 ```
 
-## Run the Full Pipeline
+## Run the Full ETL Pipeline
 ```bash
-python run_pipeline.py
+python scripts/etl_pipeline.py
 ```
 
-## Generate Charts
-```bash
-python scripts/generate_eda_charts.py
-python scripts/generate_performance_charts.py
-python scripts/generate_advanced_charts.py
-```
-
-## Open Notebooks
+## Open Notebooks (in order)
 ```bash
 jupyter notebook notebooks/
+# Run: 01_data_ingestion → 02_data_cleaning → 03_eda_analysis
+#      → 04_performance_analytics → 05_advanced_analytics
 ```
 
-## Database Schema
-Star-schema with 11 tables:
-- **Dimensions:** dim_fund (40 schemes), dim_date (2,557 days)
-- **Facts:** fact_nav (64K rows), fact_transactions (32K), fact_performance (40), fact_aum (90), fact_sip (48), fact_folio (21), fact_benchmark (8K), fact_portfolio (322), fact_category_inflow (144)
+## Fund Recommender
+```bash
+python scripts/recommender.py
+# Prompts for risk appetite: Low / Moderate / High
+```
+
+## Dataset Descriptions
+| File | Description | Rows |
+|------|-------------|------|
+| fund_master.csv | AMFI scheme master — codes, houses, categories | ~2,000 |
+| nav_history.csv | Daily NAV per scheme 2022–2026 | ~1.5M |
+| aum_data.csv | Monthly AUM by fund house | ~300 |
+| investor_transactions.csv | Investor SIP/Lumpsum/Redemption logs | ~32K |
+| scheme_performance.csv | Returns, expense ratios, risk metrics | ~40 |
+| portfolio_holdings.csv | Sector/stock weight breakdown | ~500 |
+| sip_data.csv | Monthly SIP inflow aggregates | ~48 |
+| folio_data.csv | Monthly folio counts | ~24 |
+| benchmark_data.csv | Nifty 50, Nifty 100, Sensex daily closes | ~8K |
+
+## Dashboard
+Open `dashboard/bluestock_mf.pbix` in Power BI Desktop.
 
 ## Key Results
-- Top fund by Scorecard: generated in `fund_scorecard.csv`
-- Industry AUM tracked across 10 fund houses (2022–2025)
+- Top fund by Scorecard: [fill in after running]
+- Industry AUM Dec 2025: ₹81L Cr
 - SIP ATH: ₹31,002 Cr (Dec 2025)
-- VaR/CVaR computed for all 40 schemes
-- Investor cohort analysis across demographic segments
+- Folio count: 26.12 Cr
 
-## Deliverables
-| Phase | Outputs |
-|-------|---------|
-| 1 — Ingestion | `data_ingestion.py`, `live_nav_fetch.py`, `requirements.txt` |
-| 2 — Cleaning + DB | 10 clean CSVs, `bluestock_mf.db`, `sql/schema.sql`, `sql/queries.sql`, `data_dictionary.md` |
-| 3 — EDA | 15 chart PNGs in `charts/` |
-| 4 — Performance | `fund_scorecard.csv`, `alpha_beta.csv`, benchmark comparison chart |
-| 5 — Dashboard | `dashboard/bluestock_mf_dashboard.pbix` |
-| 6 — Advanced | `var_cvar_report.csv`, rolling Sharpe, cohort, HHI charts |
-| 7 — Final | `run_pipeline.py`, `README.md`, full chart set |
+## Project Structure
+```
+bluestock_mf_capstone/
+├── data/raw/                  # Source CSVs + live NAV files
+├── data/processed/            # Cleaned CSVs (pipeline output)
+├── data/db/                   # SQLite database (gitignored)
+├── notebooks/                 # 5 Jupyter notebooks (ingestion → advanced)
+├── scripts/                   # Python scripts (ETL, metrics, recommender)
+├── sql/                       # Schema DDL + 10 analytical queries
+├── dashboard/                 # Power BI report + screenshots
+├── reports/                   # Final report PDF + presentation
+├── charts/                    # Exported chart PNGs (2x scale)
+└── config/                    # Centralized YAML configuration
+```

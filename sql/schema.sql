@@ -1,67 +1,69 @@
--- sql/schema.sql
--- Ensure database drops old components cleanly before rebuilding
-DROP TABLE IF EXISTS fact_transactions CASCADE;
-DROP TABLE IF EXISTS fact_nav CASCADE;
-DROP TABLE IF EXISTS fact_performance CASCADE;
-DROP TABLE IF EXISTS fact_aum CASCADE;
-DROP TABLE IF EXISTS dim_fund CASCADE;
-DROP TABLE IF EXISTS dim_date CASCADE;
-
--- Dimension Table: Fund Master Data
+-- Dimension: Fund
 CREATE TABLE dim_fund (
-    amfi_code INT PRIMARY KEY,
-    fund_house VARCHAR(255) NOT NULL,
-    scheme_name VARCHAR(255) NOT NULL,
-    category VARCHAR(100),
-    sub_category VARCHAR(100),
-    risk_grade VARCHAR(50)
+    amfi_code     INTEGER PRIMARY KEY,
+    fund_house    TEXT NOT NULL,
+    scheme_name   TEXT NOT NULL,
+    category      TEXT,
+    sub_category  TEXT,
+    risk_grade    TEXT,
+    plan_type     TEXT,
+    benchmark     TEXT
 );
 
--- Dimension Table: Dates Map (Essential for handling weekends/holidays)
+-- Dimension: Date
 CREATE TABLE dim_date (
-    date_id DATE PRIMARY KEY,
-    calendar_year INT NOT NULL,
-    calendar_month INT NOT NULL,
-    month_name VARCHAR(50) NOT NULL,
-    day_of_week INT NOT NULL,
-    is_weekend INT NOT NULL
+    date_id       TEXT PRIMARY KEY,
+    year          INTEGER,
+    quarter       INTEGER,
+    month         INTEGER,
+    month_name    TEXT,
+    week          INTEGER,
+    day_of_week   TEXT,
+    is_weekend    INTEGER
 );
 
--- Fact Table: Historical Daily Net Asset Values
+-- Fact: NAV
 CREATE TABLE fact_nav (
-    nav_id SERIAL PRIMARY KEY,
-    amfi_code INT REFERENCES dim_fund(amfi_code),
-    date_id DATE REFERENCES dim_date(date_id),
-    nav NUMERIC(12, 4) NOT NULL,
-    CONSTRAINT unique_fund_date UNIQUE (amfi_code, date_id)
+    nav_id        INTEGER PRIMARY KEY AUTOINCREMENT,
+    amfi_code     INTEGER NOT NULL,
+    date_id       TEXT NOT NULL,
+    nav           REAL NOT NULL,
+    FOREIGN KEY (amfi_code) REFERENCES dim_fund(amfi_code),
+    FOREIGN KEY (date_id) REFERENCES dim_date(date_id)
 );
 
--- Fact Table: Investor Trading Log
+-- Fact: Transactions
 CREATE TABLE fact_transactions (
-    transaction_id INT PRIMARY KEY,
-    investor_id INT NOT NULL,
-    amfi_code INT REFERENCES dim_fund(amfi_code),
-    transaction_date_id DATE REFERENCES dim_date(date_id),
-    transaction_type VARCHAR(50) CHECK (transaction_type IN ('SIP', 'LUMPSUM', 'REDEMPTION')),
-    amount NUMERIC(15, 2) NOT NULL,
-    investor_state VARCHAR(100),
-    kyc_status VARCHAR(50) CHECK (kyc_status IN ('VERIFIED', 'PENDING', 'FAILED'))
+    txn_id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    investor_id       TEXT NOT NULL,
+    amfi_code         INTEGER NOT NULL,
+    date_id           TEXT NOT NULL,
+    transaction_type  TEXT NOT NULL,
+    amount            REAL NOT NULL,
+    state             TEXT,
+    city_tier         TEXT,
+    kyc_status        TEXT,
+    FOREIGN KEY (amfi_code) REFERENCES dim_fund(amfi_code),
+    FOREIGN KEY (date_id) REFERENCES dim_date(date_id)
 );
 
--- Fact Table: Asset Under Management (AUM) Trackers
-CREATE TABLE fact_aum (
-    aum_id SERIAL PRIMARY KEY,
-    amfi_code INT REFERENCES dim_fund(amfi_code),
-    date_id DATE REFERENCES dim_date(date_id),
-    scheme_level_aum_crore NUMERIC(15, 2) NOT NULL
-);
-
--- Fact Table: Performance Metrics & Operational Efficiency
+-- Fact: Performance
 CREATE TABLE fact_performance (
-    amfi_code INT PRIMARY KEY REFERENCES dim_fund(amfi_code),
-    return_1y NUMERIC(5, 2),
-    return_3y NUMERIC(5, 2),
-    return_5y NUMERIC(5, 2),
-    expense_ratio NUMERIC(4, 2),
-    expense_ratio_anomaly INT DEFAULT 0
+    perf_id       INTEGER PRIMARY KEY AUTOINCREMENT,
+    amfi_code     INTEGER NOT NULL,
+    return_1yr    REAL,
+    return_3yr    REAL,
+    return_5yr    REAL,
+    expense_ratio REAL,
+    FOREIGN KEY (amfi_code) REFERENCES dim_fund(amfi_code)
+);
+
+-- Fact: AUM
+CREATE TABLE fact_aum (
+    aum_id        INTEGER PRIMARY KEY AUTOINCREMENT,
+    amfi_code     INTEGER NOT NULL,
+    date_id       TEXT NOT NULL,
+    aum_cr        REAL NOT NULL,
+    FOREIGN KEY (amfi_code) REFERENCES dim_fund(amfi_code),
+    FOREIGN KEY (date_id) REFERENCES dim_date(date_id)
 );
