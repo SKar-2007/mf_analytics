@@ -1,0 +1,223 @@
+[
+  {
+    "timestamp": "2026-06-11T14:01:51.807436",
+    "total_steps": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "steps": [
+      {
+        "step": "Data Ingestion",
+        "script": "data_ingestion.py",
+        "status": "passed"
+      },
+      {
+        "step": "Live NAV Fetch",
+        "script": "scripts/live_nav_fetch.py",
+        "status": "passed"
+      },
+      {
+        "step": "Data Cleaning",
+        "script": "scripts/data_cleaning.py",
+        "status": "passed"
+      },
+      {
+        "step": "Database Load",
+        "script": "scripts/load_database.py",
+        "status": "passed"
+      },
+      {
+        "step": "Performance Analytics",
+        "script": "scripts/performance_analytics.py",
+        "status": "passed"
+      },
+      {
+        "step": "EDA Charts (15)",
+        "script": "scripts/generate_eda_charts.py",
+        "status": "passed"
+      },
+      {
+        "step": "Performance Charts",
+        "script": "scripts/generate_performance_charts.py",
+        "status": "passed"
+      },
+      {
+        "step": "Advanced Analytics",
+        "script": "scripts/generate_advanced_charts.py",
+        "status": "passed"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-11T14:03:26.734320",
+    "total_steps": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "steps": [
+      {
+        "step": "Data Ingestion",
+        "script": "data_ingestion.py",
+        "status": "passed"
+      },
+      {
+        "step": "Live NAV Fetch",
+        "script": "scripts/live_nav_fetch.py",
+        "status": "passed"
+      },
+      {
+        "step": "Data Cleaning",
+        "script": "scripts/data_cleaning.py",
+        "status": "passed"
+      },
+      {
+        "step": "Database Load",
+        "script": "scripts/load_database.py",
+        "status": "passed"
+      },
+      {
+        "step": "Performance Analytics",
+        "script": "scripts/performance_analytics.py",
+        "status": "passed"
+      },
+      {
+        "step": "EDA Charts (15)",
+        "script": "scripts/generate_eda_charts.py",
+        "status": "passed"
+      },
+      {
+        "step": "Performance Charts",
+        "script": "scripts/generate_performance_charts.py",
+        "status": "passed"
+      },
+      {
+        "step": "Advanced Analytics",
+        "script": "scripts/generate_advanced_charts.py",
+        "status": "passed"
+      },
+      {
+        "step": "Data Quality Report",
+        "script": "scripts/data_quality_report.py",
+        "status": "passed"
+      },
+      {
+        "step": "Portfolio Optimizer",
+        "script": "scripts/portfolio_optimizer.py",
+        "status": "passed"
+      },
+      {
+        "step": "Anomaly Detector",
+        "script": "scripts/anomaly_detector.py",
+        "status": "passed"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-11T14:20:29.731249",
+    "total_steps": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "steps": [
+      {
+        "step": "Data Ingestion",
+        "script": "data_ingestion.py",
+        "status": "passed"
+      },
+      {
+        "step": "Live NAV Fetch",
+        "script": "scripts/live_nav_fetch.py",
+        "status": "passed"
+      },
+      {
+        "step": "Data Cleaning",
+        "script": "scripts/data_cleaning.py",
+        "status": "passed"
+      },
+      {
+        "step": "Database Load",
+        "script": "scripts/load_database.py",
+        "status": "passed"
+      },
+      {
+        "step": "Performance Analytics",
+        "script": "scripts/performance_analytics.py",
+        "status": "passed"
+      },
+      {
+        "step": "EDA Charts (15)",
+        "script": "scripts/generate_eda_charts.py",
+        "status": "passed"
+      },
+      {
+        "step": "Performance Charts",
+        "script": "scripts/generate_performance_charts.py",
+        "status": "passed"
+      },
+      {
+        "step": "Advanced Analytics",
+        "script": "scripts/generate_advanced_charts.py",
+        "status": "passed"
+      },
+      {
+        "step": "Data Quality Report",
+        "script": "scripts/data_quality_report.py",
+        "status": "passed"
+      },
+      {
+        "step": "Portfolio Optimizer",
+        "script": "scripts/portfolio_optimizer.py",
+        "status": "passed"
+      },
+      {
+        "step": "Anomaly Detector",
+        "script": "scripts/anomaly_detector.py",
+        "status": "passed"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-11T14:47:31.513977",
+    "total_steps": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "steps": [
+      {
+        "step": "Data Ingestion",
+        "script": "scripts/data_ingestion.py",
+        "status": "passed"
+      },
+      {
+        "step": "Data Cleaning",
+        "script": "scripts/data_cleaning.py",
+        "status": "passed"
+      },
+      {
+        "step": "Database Load",
+        "script": "scripts/load_database.py",
+        "status": "passed"
+      },
+      {
+        "step": "Performance Analytics",
+        "script": "scripts/performance_analytics.py",
+        "status": "passed"
+      },
+      {
+        "step": "EDA Charts (15)",
+        "script": "scripts/generate_eda_charts.py",
+        "status": "passed"
+      },
+      {
+        "step": "Performance Charts",
+        "script": "scripts/generate_performance_charts.py",
+        "status": "passed"
+      },
+      {
+        "step": "Advanced Analytics",
+        "script": "scripts/generate_advanced_charts.py",
+        "status": "passed"
+      }
+    ]
+  }
+]

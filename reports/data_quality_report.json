@@ -1,0 +1,916 @@
+{
+  "generated_at": "2026-06-11T14:20:08.342741",
+  "overall_score": 88.6,
+  "datasets": {
+    "fund_master": {
+      "status": "OK",
+      "rows": 40,
+      "columns": 15,
+      "column_names": [
+        "amfi_code",
+        "fund_house",
+        "scheme_name",
+        "category",
+        "sub_category",
+        "plan",
+        "launch_date",
+        "benchmark",
+        "expense_ratio_pct",
+        "exit_load_pct",
+        "min_sip_amount",
+        "min_lumpsum_amount",
+        "fund_manager",
+        "risk_category",
+        "sebi_category_code"
+      ],
+      "dtypes": {
+        "amfi_code": "int64",
+        "fund_house": "str",
+        "scheme_name": "str",
+        "category": "str",
+        "sub_category": "str",
+        "plan": "str",
+        "launch_date": "str",
+        "benchmark": "str",
+        "expense_ratio_pct": "float64",
+        "exit_load_pct": "float64",
+        "min_sip_amount": "int64",
+        "min_lumpsum_amount": "int64",
+        "fund_manager": "str",
+        "risk_category": "str",
+        "sebi_category_code": "str"
+      },
+      "missing_values": {
+        "amfi_code": 0,
+        "fund_house": 0,
+        "scheme_name": 0,
+        "category": 0,
+        "sub_category": 0,
+        "plan": 0,
+        "launch_date": 0,
+        "benchmark": 0,
+        "expense_ratio_pct": 0,
+        "exit_load_pct": 0,
+        "min_sip_amount": 0,
+        "min_lumpsum_amount": 0,
+        "fund_manager": 0,
+        "risk_category": 0,
+        "sebi_category_code": 0
+      },
+      "duplicates": "0",
+      "score": 85.7,
+      "issues": [
+        "Column 'amfi_code' has 15 outliers (37.5%)",
+        "Column 'exit_load_pct' has 8 outliers (20.0%)",
+        "Column 'min_lumpsum_amount' has 4 outliers (10.0%)"
+      ]
+    },
+    "nav_history": {
+      "status": "OK",
+      "rows": 46000,
+      "columns": 3,
+      "column_names": [
+        "amfi_code",
+        "date",
+        "nav"
+      ],
+      "dtypes": {
+        "amfi_code": "int64",
+        "date": "str",
+        "nav": "float64"
+      },
+      "missing_values": {
+        "amfi_code": 0,
+        "date": 0,
+        "nav": 0
+      },
+      "duplicates": "0",
+      "score": 85.7,
+      "issues": [
+        "Column 'amfi_code' has 17250 outliers (37.5%)",
+        "Column 'nav' has 1477 outliers (3.2%)"
+      ]
+    },
+    "aum_data": {
+      "status": "OK",
+      "rows": 90,
+      "columns": 5,
+      "column_names": [
+        "date",
+        "fund_house",
+        "aum_lakh_crore",
+        "aum_crore",
+        "num_schemes"
+      ],
+      "dtypes": {
+        "date": "str",
+        "fund_house": "str",
+        "aum_lakh_crore": "float64",
+        "aum_crore": "int64",
+        "num_schemes": "int64"
+      },
+      "missing_values": {
+        "date": 0,
+        "fund_house": 0,
+        "aum_lakh_crore": 0,
+        "aum_crore": 0,
+        "num_schemes": 0
+      },
+      "duplicates": "0",
+      "score": 100.0,
+      "issues": []
+    },
+    "sip_data": {
+      "status": "OK",
+      "rows": 48,
+      "columns": 6,
+      "column_names": [
+        "month",
+        "sip_inflow_crore",
+        "active_sip_accounts_crore",
+        "new_sip_accounts_lakh",
+        "sip_aum_lakh_crore",
+        "yoy_growth_pct"
+      ],
+      "dtypes": {
+        "month": "str",
+        "sip_inflow_crore": "int64",
+        "active_sip_accounts_crore": "float64",
+        "new_sip_accounts_lakh": "float64",
+        "sip_aum_lakh_crore": "float64",
+        "yoy_growth_pct": "float64"
+      },
+      "missing_values": {
+        "month": 0,
+        "sip_inflow_crore": 0,
+        "active_sip_accounts_crore": 0,
+        "new_sip_accounts_lakh": 0,
+        "sip_aum_lakh_crore": 0,
+        "yoy_growth_pct": 12
+      },
+      "duplicates": "0",
+      "score": 71.4,
+      "issues": [
+        "Column 'yoy_growth_pct' has 25.0% missing (moderate)",
+        "Column 'new_sip_accounts_lakh' has 1 outliers (2.1%)"
+      ]
+    },
+    "category_inflows": {
+      "status": "OK",
+      "rows": 144,
+      "columns": 3,
+      "column_names": [
+        "month",
+        "category",
+        "net_inflow_crore"
+      ],
+      "dtypes": {
+        "month": "str",
+        "category": "str",
+        "net_inflow_crore": "float64"
+      },
+      "missing_values": {
+        "month": 0,
+        "category": 0,
+        "net_inflow_crore": 0
+      },
+      "duplicates": "0",
+      "score": 85.7,
+      "issues": [
+        "Column 'net_inflow_crore' has 12 outliers (8.3%)"
+      ]
+    },
+    "folio_data": {
+      "status": "OK",
+      "rows": 21,
+      "columns": 6,
+      "column_names": [
+        "month",
+        "total_folios_crore",
+        "equity_folios_crore",
+        "debt_folios_crore",
+        "hybrid_folios_crore",
+        "others_folios_crore"
+      ],
+      "dtypes": {
+        "month": "str",
+        "total_folios_crore": "float64",
+        "equity_folios_crore": "float64",
+        "debt_folios_crore": "float64",
+        "hybrid_folios_crore": "float64",
+        "others_folios_crore": "float64"
+      },
+      "missing_values": {
+        "month": 0,
+        "total_folios_crore": 0,
+        "equity_folios_crore": 0,
+        "debt_folios_crore": 0,
+        "hybrid_folios_crore": 0,
+        "others_folios_crore": 0
+      },
+      "duplicates": "0",
+      "score": 100.0,
+      "issues": []
+    },
+    "scheme_performance": {
+      "status": "OK",
+      "rows": 40,
+      "columns": 19,
+      "column_names": [
+        "amfi_code",
+        "scheme_name",
+        "fund_house",
+        "category",
+        "plan",
+        "return_1yr_pct",
+        "return_3yr_pct",
+        "return_5yr_pct",
+        "benchmark_3yr_pct",
+        "alpha",
+        "beta",
+        "sharpe_ratio",
+        "sortino_ratio",
+        "std_dev_ann_pct",
+        "max_drawdown_pct",
+        "aum_crore",
+        "expense_ratio_pct",
+        "morningstar_rating",
+        "risk_grade"
+      ],
+      "dtypes": {
+        "amfi_code": "int64",
+        "scheme_name": "str",
+        "fund_house": "str",
+        "category": "str",
+        "plan": "str",
+        "return_1yr_pct": "float64",
+        "return_3yr_pct": "float64",
+        "return_5yr_pct": "float64",
+        "benchmark_3yr_pct": "float64",
+        "alpha": "float64",
+        "beta": "float64",
+        "sharpe_ratio": "float64",
+        "sortino_ratio": "float64",
+        "std_dev_ann_pct": "float64",
+        "max_drawdown_pct": "float64",
+        "aum_crore": "int64",
+        "expense_ratio_pct": "float64",
+        "morningstar_rating": "int64",
+        "risk_grade": "str"
+      },
+      "missing_values": {
+        "amfi_code": 0,
+        "scheme_name": 0,
+        "fund_house": 0,
+        "category": 0,
+        "plan": 0,
+        "return_1yr_pct": 0,
+        "return_3yr_pct": 0,
+        "return_5yr_pct": 0,
+        "benchmark_3yr_pct": 0,
+        "alpha": 0,
+        "beta": 0,
+        "sharpe_ratio": 0,
+        "sortino_ratio": 0,
+        "std_dev_ann_pct": 0,
+        "max_drawdown_pct": 0,
+        "aum_crore": 0,
+        "expense_ratio_pct": 0,
+        "morningstar_rating": 0,
+        "risk_grade": 0
+      },
+      "duplicates": "0",
+      "score": 85.7,
+      "issues": [
+        "Column 'amfi_code' has 15 outliers (37.5%)",
+        "Column 'beta' has 6 outliers (15.0%)",
+        "Column 'sharpe_ratio' has 5 outliers (12.5%)",
+        "Column 'sortino_ratio' has 4 outliers (10.0%)"
+      ]
+    },
+    "investor_transactions": {
+      "status": "OK",
+      "rows": 32778,
+      "columns": 13,
+      "column_names": [
+        "investor_id",
+        "transaction_date",
+        "amfi_code",
+        "transaction_type",
+        "amount_inr",
+        "state",
+        "city",
+        "city_tier",
+        "age_group",
+        "gender",
+        "annual_income_lakh",
+        "payment_mode",
+        "kyc_status"
+      ],
+      "dtypes": {
+        "investor_id": "str",
+        "transaction_date": "str",
+        "amfi_code": "int64",
+        "transaction_type": "str",
+        "amount_inr": "int64",
+        "state": "str",
+        "city": "str",
+        "city_tier": "str",
+        "age_group": "str",
+        "gender": "str",
+        "annual_income_lakh": "float64",
+        "payment_mode": "str",
+        "kyc_status": "str"
+      },
+      "missing_values": {
+        "investor_id": 0,
+        "transaction_date": 0,
+        "amfi_code": 0,
+        "transaction_type": 0,
+        "amount_inr": 0,
+        "state": 0,
+        "city": 0,
+        "city_tier": 0,
+        "age_group": 0,
+        "gender": 0,
+        "annual_income_lakh": 0,
+        "payment_mode": 0,
+        "kyc_status": 0
+      },
+      "duplicates": "0",
+      "score": 85.7,
+      "issues": [
+        "Column 'amfi_code' has 12324 outliers (37.6%)"
+      ]
+    },
+    "portfolio_holdings": {
+      "status": "OK",
+      "rows": 322,
+      "columns": 8,
+      "column_names": [
+        "amfi_code",
+        "stock_symbol",
+        "stock_name",
+        "sector",
+        "weight_pct",
+        "market_value_cr",
+        "current_price_inr",
+        "portfolio_date"
+      ],
+      "dtypes": {
+        "amfi_code": "int64",
+        "stock_symbol": "str",
+        "stock_name": "str",
+        "sector": "str",
+        "weight_pct": "float64",
+        "market_value_cr": "float64",
+        "current_price_inr": "float64",
+        "portfolio_date": "str"
+      },
+      "missing_values": {
+        "amfi_code": 0,
+        "stock_symbol": 0,
+        "stock_name": 0,
+        "sector": 0,
+        "weight_pct": 0,
+        "market_value_cr": 0,
+        "current_price_inr": 0,
+        "portfolio_date": 0
+      },
+      "duplicates": "0",
+      "score": 85.7,
+      "issues": [
+        "Column 'amfi_code' has 122 outliers (37.9%)",
+        "Column 'weight_pct' has 1 outliers (0.3%)"
+      ]
+    },
+    "benchmark_data": {
+      "status": "OK",
+      "rows": 8050,
+      "columns": 3,
+      "column_names": [
+        "date",
+        "index_name",
+        "close_value"
+      ],
+      "dtypes": {
+        "date": "str",
+        "index_name": "str",
+        "close_value": "float64"
+      },
+      "missing_values": {
+        "date": 0,
+        "index_name": 0,
+        "close_value": 0
+      },
+      "duplicates": "0",
+      "score": 100.0,
+      "issues": []
+    }
+  },
+  "database": {
+    "tables": {
+      "dim_date": {
+        "rows": 2557,
+        "columns": 6,
+        "schema": [
+          {
+            "name": "date_id",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "calendar_year",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "calendar_month",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "month_name",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "day_of_week",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "is_weekend",
+            "type": "BIGINT",
+            "nullable": true
+          }
+        ]
+      },
+      "dim_fund": {
+        "rows": 40,
+        "columns": 15,
+        "schema": [
+          {
+            "name": "amfi_code",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "fund_house",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "scheme_name",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "category",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "sub_category",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "plan_type",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "risk_grade",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "launch_date",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "benchmark",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "expense_ratio_pct",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "exit_load_pct",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "min_sip_amount",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "min_lumpsum_amount",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "fund_manager",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "sebi_category_code",
+            "type": "TEXT",
+            "nullable": true
+          }
+        ]
+      },
+      "fact_aum": {
+        "rows": 90,
+        "columns": 6,
+        "schema": [
+          {
+            "name": "aum_id",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "fund_house",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "date_id",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "aum_lakh_crore",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "aum_crore",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "num_schemes",
+            "type": "INTEGER",
+            "nullable": true
+          }
+        ]
+      },
+      "fact_benchmark": {
+        "rows": 8050,
+        "columns": 4,
+        "schema": [
+          {
+            "name": "bench_id",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "date_id",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "index_name",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "close_value",
+            "type": "REAL",
+            "nullable": false
+          }
+        ]
+      },
+      "fact_category_inflow": {
+        "rows": 144,
+        "columns": 4,
+        "schema": [
+          {
+            "name": "inflow_id",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "month",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "category",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "net_inflow_crore",
+            "type": "REAL",
+            "nullable": true
+          }
+        ]
+      },
+      "fact_folio": {
+        "rows": 21,
+        "columns": 7,
+        "schema": [
+          {
+            "name": "folio_id",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "month",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "total_folios_crore",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "equity_folios_crore",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "debt_folios_crore",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "hybrid_folios_crore",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "others_folios_crore",
+            "type": "REAL",
+            "nullable": true
+          }
+        ]
+      },
+      "fact_nav": {
+        "rows": 64320,
+        "columns": 4,
+        "schema": [
+          {
+            "name": "nav_id",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "amfi_code",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "name": "date_id",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "nav",
+            "type": "REAL",
+            "nullable": false
+          }
+        ]
+      },
+      "fact_performance": {
+        "rows": 40,
+        "columns": 14,
+        "schema": [
+          {
+            "name": "perf_id",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "amfi_code",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "name": "return_1yr_pct",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "return_3yr_pct",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "return_5yr_pct",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "expense_ratio_pct",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "sharpe_ratio",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "sortino_ratio",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "alpha",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "beta",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "std_dev_ann_pct",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "max_drawdown_pct",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "aum_crore",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "risk_grade",
+            "type": "TEXT",
+            "nullable": true
+          }
+        ]
+      },
+      "fact_portfolio": {
+        "rows": 322,
+        "columns": 7,
+        "schema": [
+          {
+            "name": "holding_id",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "amfi_code",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "name": "stock_symbol",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "stock_name",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "sector",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "weight_pct",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "market_value_cr",
+            "type": "REAL",
+            "nullable": true
+          }
+        ]
+      },
+      "fact_sip": {
+        "rows": 48,
+        "columns": 7,
+        "schema": [
+          {
+            "name": "sip_id",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "month",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "sip_inflow_crore",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "active_sip_accounts_crore",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "new_sip_accounts_lakh",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "sip_aum_lakh_crore",
+            "type": "REAL",
+            "nullable": true
+          },
+          {
+            "name": "yoy_growth_pct",
+            "type": "REAL",
+            "nullable": true
+          }
+        ]
+      },
+      "fact_transactions": {
+        "rows": 32778,
+        "columns": 12,
+        "schema": [
+          {
+            "name": "txn_id",
+            "type": "INTEGER",
+            "nullable": true
+          },
+          {
+            "name": "investor_id",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "amfi_code",
+            "type": "INTEGER",
+            "nullable": false
+          },
+          {
+            "name": "date_id",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "transaction_type",
+            "type": "TEXT",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "type": "REAL",
+            "nullable": false
+          },
+          {
+            "name": "state",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "city",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "city_tier",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "age_group",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "gender",
+            "type": "TEXT",
+            "nullable": true
+          },
+          {
+            "name": "kyc_status",
+            "type": "TEXT",
+            "nullable": true
+          }
+        ]
+      }
+    },
+    "row_count_total": 108410,
+    "issues": []
+  },
+  "warnings": [],
+  "errors": [],
+  "status": "PASS"
+}

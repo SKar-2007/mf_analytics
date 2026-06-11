@@ -1,0 +1,70 @@
+# Bluestock MF Capstone — Centralized Configuration
+# All paths are relative to the project root.
+
+project:
+  name: "Bluestock Mutual Fund Analytics"
+  version: "2.0.0"
+
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  database: "data/db/bluestock_mf.db"
+  charts: "charts"
+  reports: "reports"
+  schema: "sql/schema.sql"
+  queries: "sql/queries.sql"
+
+datasets:
+  fund_master: "fund_master.csv"
+  nav_history: "nav_history.csv"
+  aum_data: "aum_data.csv"
+  sip_data: "sip_data.csv"
+  category_inflows: "category_inflows.csv"
+  folio_data: "folio_data.csv"
+  scheme_performance: "scheme_performance.csv"
+  investor_transactions: "investor_transactions.csv"
+  portfolio_holdings: "portfolio_holdings.csv"
+  benchmark_data: "benchmark_data.csv"
+
+live_nav:
+  base_url: "https://api.mfapi.in/mf/{code}"
+  timeout_seconds: 15
+  max_retries: 3
+  retry_delay_seconds: 2
+  rate_limit_per_second: 2
+  schemes:
+    HDFC_Top100: 125497
+    SBI_Bluechip: 119551
+    ICICI_Bluechip: 120503
+    Nippon_LargeCap: 118632
+    Axis_Bluechip: 119092
+    Kotak_Bluechip: 120841
+
+analytics:
+  risk_free_rate: 0.065
+  trading_days_per_year: 252
+  var_confidence: 0.95
+  rolling_window_days: 90
+  anomaly_zscore_threshold: 3.0
+  scorecard_weights:
+    return: 0.30
+    sharpe: 0.25
+    alpha: 0.20
+    expense: 0.15
+    drawdown: 0.10
+
+database:
+  date_range:
+    start: "2020-01-01"
+    end: "2026-12-31"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s | %(levelname)-8s | %(name)s:%(lineno)d | %(message)s"
+  file: "logs/pipeline.log"
+
+charts:
+  width: 1400
+  height: 700
+  scale: 2
+  dpi: 150
